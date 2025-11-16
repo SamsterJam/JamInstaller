@@ -604,36 +604,36 @@ arch-chroot /mnt pacman -S --noconfirm pulseaudio-bluetooth blueman
 
 
 
-# = Udiskie = #
-
-echo -e "${BOLD_BRIGHT_BLUE}Setting up udiskie...${NC}"
-
-arch-chroot /mnt pacman -S --needed --noconfirm udiskie
-
-# Create the user's systemd directory if it doesn't exist
-arch-chroot /mnt mkdir -p /home/$USER_NAME/.config/systemd/user
-
-# Create and enable udiskie service for automounting USB drives as a user service
-arch-chroot /mnt /bin/bash -c "cat > /home/$USER_NAME/.config/systemd/user/udiskie.service <<EOF
-[Unit]
-Description=Automount USB drives with udiskie
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/udiskie -a
-
-[Install]
-WantedBy=default.target
-EOF"
-
-# Ensure the correct permissions are set for the user's systemd directory and service file
-arch-chroot /mnt chown -R $USER_NAME: /home/$USER_NAME/.config/systemd
-
-# Enable the udiskie service for the user so it starts on login
-arch-chroot /mnt su - "$USER_NAME" -c "systemctl --user enable udiskie.service"
-
-
-
+# # = Udiskie = #
+#
+# echo -e "${BOLD_BRIGHT_BLUE}Setting up udiskie...${NC}"
+#
+# arch-chroot /mnt pacman -S --needed --noconfirm udiskie
+#
+# # Create the user's systemd directory if it doesn't exist
+# arch-chroot /mnt mkdir -p /home/$USER_NAME/.config/systemd/user
+#
+# # Create and enable udiskie service for automounting USB drives as a user service
+# arch-chroot /mnt /bin/bash -c "cat > /home/$USER_NAME/.config/systemd/user/udiskie.service <<EOF
+# [Unit]
+# Description=Automount USB drives with udiskie
+#
+# [Service]
+# Type=simple
+# ExecStart=/usr/bin/udiskie -a
+#
+# [Install]
+# WantedBy=default.target
+# EOF"
+#
+# # Ensure the correct permissions are set for the user's systemd directory and service file
+# arch-chroot /mnt chown -R $USER_NAME: /home/$USER_NAME/.config/systemd
+#
+# # Enable the udiskie service for the user so it starts on login
+# arch-chroot /mnt su - "$USER_NAME" -c "systemctl --user enable udiskie.service"
+#
+#
+#
 
 
 
@@ -694,7 +694,7 @@ PACKAGES=(
     papirus-icon-theme xapp   # Icons for rofi and applications
     noto-fonts-emoji          # Emojis
     xdg-user-dirs             # Generate and assign home directories
-    udiskie                   # Auto mounnt USBs
+    # udiskie                   # Auto mounnt USBs
     man                       # For help instructions
     gparted                   # For formating etc..
     github-cli                # For Github to save your credentials

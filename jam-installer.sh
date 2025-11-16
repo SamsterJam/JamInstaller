@@ -719,8 +719,8 @@ AUR_PACKAGES=(
     python-pywal            # Generate color schemes for theme script
     nordic-darker-theme     # GTK theme
     i3lock-color            # Lock dependency takes in colors
-    i3lock-fancy-rapid-git  # Blur lock screen
-    qt5-styleplugins        # Copies GTK theme to qt
+    # i3lock-fancy-rapid-git  # Blur lock screen
+    # qt5-styleplugins        # Copies GTK theme to qt
     
     # Applications
     google-chrome           # Web browser

@@ -406,7 +406,7 @@ arch-chroot /mnt bash -c 'echo "vm.swappiness=10" >> /etc/sysctl.d/99-sysctl.con
 # Create a user account
 echo -e "${BOLD_BRIGHT_BLUE}Creating user account...${NC}"
 arch-chroot /mnt useradd -m -G wheel -s /bin/zsh "$USER_NAME"
-echo "$USER_NAME:$USER_PASSWORD" | chpasswd --root /mnt
+arch-chroot /mnt bash -c "echo '$USER_NAME:$USER_PASSWORD' | chpasswd"
 
 
 # Set up sudo

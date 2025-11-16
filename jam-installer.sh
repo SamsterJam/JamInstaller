@@ -350,7 +350,7 @@ echo "KEYMAP=us" > /mnt/etc/vconsole.conf
 echo "127.0.0.1 localhost" >> /mnt/etc/hosts
 echo "::1       localhost" >> /mnt/etc/hosts
 echo "127.0.1.1 $HOSTNAME.localdomain $HOSTNAME" >> /mnt/etc/hosts
-echo root:"$USER_PASSWORD" | chpasswd --root /mnt
+arch-chroot /mnt bash -c "echo 'root:$USER_PASSWORD' | chpasswd"
 arch-chroot /mnt chsh -s /bin/zsh root
 
 
